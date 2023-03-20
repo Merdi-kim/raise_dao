@@ -9,6 +9,7 @@ contract Raise {
         uint256 amountRaised;
         address payable proposalCreator;
         uint256 flagCount;
+        bool underInvestigation;
         bool FundsSent;
     }
 
@@ -31,15 +32,18 @@ contract Raise {
     /**@dev List of all proposals already created and recorded onchain */
     mapping(string => Proposal) proposals;
 
-    function createProposal( string memory _proposalId ) external {
-        Proposal memory newProposal = Proposal(0, 0, payable(msg.sender), 0, false);
+    function createProposal( string memory _proposalId, uint256 _totalAmount ) external {
+        require(keccak256(abi.encodePacked(_proposalId)) != keccak256(abi.encodePacked()), 'no proposalId');
+        Proposal memory newProposal = Proposal(_totalAmount, 0, payable(msg.sender), 0, false, false);
         proposals[_proposalId] = newProposal;
         emit ProposalCreated(_proposalId);
     }
 
     function fundProposal( string memory _proposalId ) external payable proposalCheck(_proposalId) {
         require(msg.value > 0, 'null amount');
-        payable(address(this)).transfer(msg.value);
+        //payable(address(this)).transfer(msg.value);
+        proposals[_proposalId].proposalCreator.transfer(msg.value);
+        proposals[_proposalId].amountRaised += msg.value;
         emit ProposalFunded(_proposalId, msg.value);
     }
 
@@ -52,9 +56,22 @@ contract Raise {
         proposals[_proposalId].flagCount = proposals[_proposalId].flagCount + 1;
     }
 
-    function unlistProposal() external {}  //to be thought about 
+    /**
+     * function that pauses deposits on a certain proposal if flagged too much
+     * only admin can execute this
+     */
+    function pauseProposal(string memory _proposalId) external proposalCheck(_proposalId) {
+        proposals[_proposalId].underInvestigation = true;
+    }  //to be thought about
 
-    function pauseProposal() external {}  //to be thought about
+    /**
+     * function that unpauses deposits on a certain proposal if proposal is legitimate after investigation
+     * only admin can execute this
+     */
+    function unpauseProposal(string memory _proposalId) external proposalCheck(_proposalId) {
+        require(proposals[_proposalId].underInvestigation == true, 'Not paused');
+        proposals[_proposalId].underInvestigation = false;
+    }  //to be thought about
 
     /**
      * Owner of a proposal can withdraw funds when the campain is done
@@ -64,6 +81,16 @@ contract Raise {
         require(proposal.amountRaised >= proposal.totalAmount, 'Funding ongoing');
         proposal.FundsSent = true;
         proposal.proposalCreator.transfer(proposal.totalAmount);
+    }
+
+
+
+
+
+
+
+    function getProposal(string memory id) external view returns(Proposal memory prop) {
+        return proposals[id];
     }
 
 }
