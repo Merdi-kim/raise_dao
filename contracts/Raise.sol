@@ -20,6 +20,7 @@ contract Raise {
     modifier proposalCheck(string memory _proposalId) {
         Proposal memory proposal = proposals[_proposalId];
         require(proposal.amountRaised < proposal.totalAmount, 'Funding done');
+        require(proposal.underInvestigation == false, 'Paused');
         _;
     }
 
@@ -68,7 +69,7 @@ contract Raise {
      * function that unpauses deposits on a certain proposal if proposal is legitimate after investigation
      * only admin can execute this
      */
-    function unpauseProposal(string memory _proposalId) external proposalCheck(_proposalId) {
+    function unpauseProposal(string memory _proposalId) external {
         require(proposals[_proposalId].underInvestigation == true, 'Not paused');
         proposals[_proposalId].underInvestigation = false;
     }  //to be thought about
