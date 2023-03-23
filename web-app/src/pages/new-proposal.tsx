@@ -3,6 +3,11 @@ import { db } from '@/lib/database'
 import Router from 'next/router'
 import { CIDString, Web3Storage } from 'web3.storage'
 import { ChangeEvent, FormEvent, useState } from 'react'
+import contractAbi from '@/artifacts/contracts/Raise.sol/Raise.json'
+import { useContract, useSigner } from 'wagmi'
+import { contractAddress } from '@/utils'
+import { ethers } from 'ethers'
+import { ConnectButton } from '@rainbow-me/rainbowkit'
 
 interface donationDataTypes {
   title:string, 
@@ -20,6 +25,14 @@ const NewProposal = () => {
     budgetAmount:0,
     images: null,
     imagesPreview:[]
+  })
+
+  const { data: signer, isError, isLoading } = useSigner()
+
+  const contract = useContract({
+    address: contractAddress,
+    abi: contractAbi.abi,
+    signerOrProvider: signer
   })
 
   const storage = new Web3Storage({token:process.env.NEXT_PUBLIC_STORAGE_KEY!})
@@ -46,6 +59,7 @@ const NewProposal = () => {
       donationData.budgetAmount,
       cid!
     ]);
+    await contract?.createProposal('hfdd', ethers.utils.parseEther(`${donationData.budgetAmount}`))
     Router.push('/home')
   }
 
@@ -68,7 +82,7 @@ const NewProposal = () => {
           </div>}
           <input type="number" placeholder='Your budget amount goes here...' onChange={(e) => setDonationData({...donationData, budgetAmount:Number(e.target.value)})} className='outline-none w-5/6 my-4 h-8 rounded-lg p-4'/>
           <div className='w-5/6 h-24 flex items-center justify-center'>
-            <button className='h-8 w-[150px] rounded-lg text-white bg-blue-500'>Publish</button>
+            { true ? <button className='h-8 w-[150px] rounded-lg text-white bg-blue-500'>Publish</button> : <ConnectButton/>}
           </div>
         </form>
       </div>
