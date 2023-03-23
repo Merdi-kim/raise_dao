@@ -1,4 +1,4 @@
-import LandingPage from '@/components/LandingPage.tsx'
+import LandingPage from '@/components/LandingPage'
 import Head from 'next/head'
 
 
