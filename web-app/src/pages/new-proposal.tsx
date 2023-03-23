@@ -1,6 +1,7 @@
 import Navbar from '@/components/__modules__/Navbar'
 import { db } from '@/lib/database'
 import Router from 'next/router'
+import { CIDString, Web3Storage } from 'web3.storage'
 import { ChangeEvent, FormEvent, useState } from 'react'
 
 interface donationDataTypes {
@@ -21,23 +22,29 @@ const NewProposal = () => {
     imagesPreview:[]
   })
 
+  const storage = new Web3Storage({token:process.env.NEXT_PUBLIC_STORAGE_KEY!})
+
   const selectFiles = (e:ChangeEvent<HTMLInputElement> ) => {
     const {files} = e.target 
-    setDonationData({...donationData, images:files})
     const filesArray = Array.from(files!)
-    setDonationData({...donationData, imagesPreview:filesArray.map(el => URL.createObjectURL(el))})
+    const filesPreviewArray = filesArray.map(el => URL.createObjectURL(el))
+    setDonationData({...donationData, imagesPreview: filesPreviewArray, images:files})
   }
 
   const publishData = async(e:FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if(!donationData.title || !donationData.explanation || !donationData.budgetAmount) return window.alert('Missing data')
+    let cid:CIDString | undefined
+    if(donationData.images) {
+      cid = await storage.put(donationData.images)
+    }
     const collectionReference = db.collection("case");
     await collectionReference.create([
       donationData.title,
       donationData.title,
       donationData.explanation,
       donationData.budgetAmount,
-      ['//']
+      cid!
     ]);
     Router.push('/home')
   }

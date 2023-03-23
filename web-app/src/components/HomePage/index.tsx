@@ -15,7 +15,6 @@ function HomePage() {
       const records = await collectionReference.get()
       const { data } = records
       setData(data)
-      console.log(data)
     }catch(err) {
       console.log(err)
     }
