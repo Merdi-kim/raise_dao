@@ -3,14 +3,14 @@ import { CollectionRecordResponse } from '@polybase/client'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Navbar from '../__modules__/Navbar'
-import DonationCard from './ProposalCard'
+import ProposalCard from './ProposalCard'
 
 function HomePage() {
 
   const [data, setData] = useState<CollectionRecordResponse<any>[]>([])
 
   const fetchData = async() => {
-    const collectionReference = db.collection("case")
+    const collectionReference = db.collection("proposal")
     try{
       const records = await collectionReference.get()
       const { data } = records
@@ -36,7 +36,7 @@ function HomePage() {
         </div>
       </div>
       <div className='flex flex-col items-center pt-12'>
-        { data.map((el, index) =><DonationCard key={index} data={el.data}/>)}
+        { data.map((el, index) =><ProposalCard key={index} data={el.data}/>)}
       </div>
       <Link href={'/new-proposal'} className='fixed top-[80vh] right-20 rounded-[50%] overflow-hidden bg-gray-200 hover:bg-gray-300'> 
         <img src="/assets/add.png" className='h-16 w-16' alt="add icon" />

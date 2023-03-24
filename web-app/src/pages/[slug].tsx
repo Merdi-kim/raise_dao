@@ -7,11 +7,13 @@ import { useRouter } from 'next/router'
 const DetailsPage = () => {
 
   const [data, setData] = useState<CollectionRecordResponse<any>[]>([])
+  const [id, setId] = useState('')
   const router = useRouter()
 
   const fetchData = async() => {
-    const collectionReference = db.collection("case")
+    const collectionReference = db.collection("proposal")
     const { id } = router.query
+    setId(id)
     if(!id) return router.push('/home')
     try{
       const record = await collectionReference.record(`${id}`).get()
@@ -27,7 +29,7 @@ const DetailsPage = () => {
   }, [])
 
   return (
-    < DetailsPageComponent data={data}/> 
+    < DetailsPageComponent data={data} proposalId={id}/> 
   ) 
 }
 

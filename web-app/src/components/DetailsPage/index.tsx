@@ -8,7 +8,7 @@ import { ethers } from 'ethers'
 import { db } from '@/lib/database'
 import Router from 'next/router'
 
-const DetailsPage = ({data}) => {
+const DetailsPage = ({data, proposalId}) => {
   
 
   const [images, setImages] = useState<Web3File[]>([])
@@ -25,8 +25,7 @@ const DetailsPage = ({data}) => {
   const storage = new Web3Storage({token:process.env.NEXT_PUBLIC_STORAGE_KEY!})
   
   const retrieveImages = async(cid:string) => {
-    console.log(cid)
-    const res = await storage.get(cid)
+    const res = await storage.get(`${cid}`)
     if (!res?.ok) {
       throw new Error(`failed to get ${cid} - [${res?.status}] ${res?.statusText}`)
     }
@@ -44,11 +43,11 @@ const DetailsPage = ({data}) => {
 
   const donate = async() => {
     if(amount <= '0') return window.alert('Cannot donate 0 ETH')
-    const tx = await contract?.fundProposal('hfdd', {value: ethers.utils.parseEther(`${amount}`)})
-    const collectionReference = db.collection("case");
+    await contract?.fundProposal(Number(proposalId), {value: ethers.utils.parseEther(`${amount}`)})
+    const collectionReference = db.collection("proposal");
     await collectionReference
     .record(data.id)
-    .call("updateStatistics", [amount]);
+    .call("updateStatistics", [Number(amount)]);
     Router.push('/home')
   }
 

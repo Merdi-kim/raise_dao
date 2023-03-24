@@ -4,11 +4,10 @@ import DonorsCount from './DonorsCount'
 
 interface ProposalData {
   id: string; 
-  //publicKey: PublicKey;
   title: string;
   explanation: string;
   budgetAmount: number;
-  images: string[];
+  images: string;
   donorsCount: number;
   raisedAmount: number;
 }
@@ -16,7 +15,7 @@ interface ProposalData {
 const ProposalCard:FC<ProposalData> = ({ data }) => {
   return (
     <div className='w-8/12 h-[16rem] mb-20'>
-      <Link href={{ pathname:`/${data.title}`, query: { id : data.title } }}>
+      <Link href={{ pathname:`/${data.id}`, query: { id : data.id } }}>
       <div className='flex items-center rounded-xl bg-gray-100 shadow-2xl px-2'>
         <img 
           src="https://i0.wp.com/ketto.blog/wp-content/uploads/2020/10/shutterstock_1735703225-e1603424756464.jpg?fit=547%2C292&ssl=1" 
@@ -29,19 +28,19 @@ const ProposalCard:FC<ProposalData> = ({ data }) => {
                {data.explanation}
             </p>
             <div className='h-10 flex flex-col items-center justify-center my-4'>
-              <progress className='w-2/4 h-[1rem]' value="75" max="100"/>
+              <progress className='w-2/4 h-[1rem]' value={data.raisedAmount} max={data.budgetAmount}/>
               <div className='font-semibold flex mt-2 text-sm'>
                 <div className='flex items-center'>
-                  3456 <img src="/assets/eth-logo.png" className='h-3' alt="" />
+                  {data.raisedAmount} <img src="/assets/eth-logo.png" className='h-3' alt="" />
                 </div>
                  / 
                 <div className='flex items-center'>
-                  34560 <img src="/assets/eth-logo.png" className='h-3' alt="" />
+                  {data.budgetAmount} <img src="/assets/eth-logo.png" className='h-3' alt="" />
                 </div>
               </div>
             </div>
             <div className='flex justify-between pl-8'>
-                <DonorsCount/>
+                <DonorsCount count ={data.donorsCount}/>
                 <button className='pb-2 border-gray-400 hover:border-b-2'>Read more</button>
             </div>
         </div>
