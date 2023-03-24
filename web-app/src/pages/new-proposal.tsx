@@ -48,14 +48,14 @@ const NewProposal = () => {
   const publishData = async(e:FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const id = stringHash(donationData.title)
-    /*if(!donationData.title || !donationData.explanation || !donationData.budgetAmount) return window.alert('Missing data')
+    if(!donationData.title || donationData.explanation.length < 550  || !donationData.budgetAmount) return window.alert('Missing data')
     let cid:CIDString | undefined
     if(donationData.images) {
       cid = await storage.put(donationData.images)
-    }*/
+    }
     const tx = await contract?.createProposal(id, ethers.utils.parseEther(`${donationData.budgetAmount}`))
     console.log(tx)
-    /*const collectionReference = db.collection("case");
+    const collectionReference = db.collection("case");
     await collectionReference.create([
       id,
       donationData.title,
@@ -63,7 +63,7 @@ const NewProposal = () => {
       donationData.budgetAmount,
       cid!
     ]);
-    Router.push('/home')*/
+    Router.push('/home')
   }
 
   return (

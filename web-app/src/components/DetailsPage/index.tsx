@@ -9,6 +9,7 @@ import { db } from '@/lib/database'
 import Router from 'next/router'
 
 const DetailsPage = ({data}) => {
+  
 
   const [images, setImages] = useState<Web3File[]>([])
   const [amount, setAmount] = useState('0')
@@ -23,18 +24,23 @@ const DetailsPage = ({data}) => {
 
   const storage = new Web3Storage({token:process.env.NEXT_PUBLIC_STORAGE_KEY!})
   
-  const retrieveImages = async() => {
-    const res = await storage.get('bafybeihcfs7yuari4rintgg2wn4ua2cgusfuretud7idigo3qb3skbl524')
+  const retrieveImages = async(cid:string) => {
+    console.log(cid)
+    const res = await storage.get(cid)
     if (!res?.ok) {
-      throw new Error(`failed to get ${data.images} - [${res?.status}] ${res?.statusText}`)
+      throw new Error(`failed to get ${cid} - [${res?.status}] ${res?.statusText}`)
     }
     const files = await res.files()
     setImages(files)
   }
 
   useEffect(() => {
-    retrieveImages()
-  }, [])
+    if(data.id !==undefined) {
+      retrieveImages(data.images)
+    }
+  },[data.id])
+
+  
 
   const donate = async() => {
     if(amount <= '0') return window.alert('Cannot donate 0 ETH')
