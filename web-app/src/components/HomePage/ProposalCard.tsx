@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React, {FC} from 'react'
 import DonorsCount from './DonorsCount'
 
-interface DonationData {
+interface ProposalData {
   id: string; 
   //publicKey: PublicKey;
   title: string;
@@ -13,13 +13,13 @@ interface DonationData {
   raisedAmount: number;
 }
 
-const DonationCard:FC<DonationData> = ({ data }) => {
+const ProposalCard:FC<ProposalData> = ({ data }) => {
   return (
-    <div className='w-8/12 h-[16rem] mb-32'>
+    <div className='w-8/12 h-[16rem] mb-20'>
       <Link href={{ pathname:`/${data.title}`, query: { id : data.title } }}>
       <div className='flex items-center rounded-xl bg-gray-100 shadow-2xl px-2'>
         <img 
-          src="https://www.shutterstock.com/image-photo/top-view-diverse-young-volunteers-260nw-1821196490.jpg" 
+          src="https://i0.wp.com/ketto.blog/wp-content/uploads/2020/10/shutterstock_1735703225-e1603424756464.jpg?fit=547%2C292&ssl=1" 
           alt="" 
           className='h-[270px] w-[270px] rounded-lg my-4 object-cover'
         />
@@ -52,4 +52,4 @@ const DonationCard:FC<DonationData> = ({ data }) => {
   )
 }
 
-export default DonationCard
+export default ProposalCard
