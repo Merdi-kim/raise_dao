@@ -5,6 +5,7 @@ import contractAbi from '@/artifacts/contracts/Raise.sol/Raise.json'
 import { useContract, useSigner } from 'wagmi'
 import { contractAddress } from '@/utils'
 import { ethers } from 'ethers'
+import { db } from '@/lib/database'
 import Router from 'next/router'
 
 const DetailsPage = ({data}) => {
@@ -37,8 +38,11 @@ const DetailsPage = ({data}) => {
 
   const donate = async() => {
     if(amount <= '0') return window.alert('Cannot donate 0 ETH')
-    await contract?.fundProposal('hfdd', {value: ethers.utils.parseEther(`${amount}`)})
-    //update database
+    const tx = await contract?.fundProposal('hfdd', {value: ethers.utils.parseEther(`${amount}`)})
+    const collectionReference = db.collection("case");
+    await collectionReference
+    .record(data.id)
+    .call("updateStatistics", [amount]);
     Router.push('/home')
   }
 

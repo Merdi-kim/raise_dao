@@ -13,7 +13,7 @@ const config: HardhatUserConfig = {
     sources: "./contracts",
     tests: "./test",
     cache: "./cache",
-    artifacts: "./web-app/artifacts"
+    artifacts: "./web-app/src/artifacts"
   },
 };
 

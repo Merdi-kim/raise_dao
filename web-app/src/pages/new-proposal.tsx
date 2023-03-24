@@ -8,6 +8,7 @@ import { useContract, useSigner } from 'wagmi'
 import { contractAddress } from '@/utils'
 import { ethers } from 'ethers'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import stringHash from '@sindresorhus/string-hash';
 
 interface donationDataTypes {
   title:string, 
@@ -46,21 +47,23 @@ const NewProposal = () => {
 
   const publishData = async(e:FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if(!donationData.title || !donationData.explanation || !donationData.budgetAmount) return window.alert('Missing data')
+    const id = stringHash(donationData.title)
+    /*if(!donationData.title || !donationData.explanation || !donationData.budgetAmount) return window.alert('Missing data')
     let cid:CIDString | undefined
     if(donationData.images) {
       cid = await storage.put(donationData.images)
-    }
-    const collectionReference = db.collection("case");
+    }*/
+    const tx = await contract?.createProposal(id, ethers.utils.parseEther(`${donationData.budgetAmount}`))
+    console.log(tx)
+    /*const collectionReference = db.collection("case");
     await collectionReference.create([
-      donationData.title,
+      id,
       donationData.title,
       donationData.explanation,
       donationData.budgetAmount,
       cid!
     ]);
-    await contract?.createProposal('hfdd', ethers.utils.parseEther(`${donationData.budgetAmount}`))
-    Router.push('/home')
+    Router.push('/home')*/
   }
 
   return (
