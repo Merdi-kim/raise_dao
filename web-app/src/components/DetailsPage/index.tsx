@@ -45,21 +45,29 @@ const DetailsPage = ({data}) => {
   return (
     <div>
       <Navbar/>
-      <div className='h-full w-full flex justify-center'>
-        <div className=' w-7/12 p-4'>
-          <h1 className='text-center font-bold text-3xl my-8'>{data.title}</h1>
+      <div className=' bg-[url("https://i0.wp.com/ketto.blog/wp-content/uploads/2020/10/shutterstock_1735703225-e1603424756464.jpg?fit=547%2C292&ssl=1")] bg-cover'>
+        <div className='h-full w-full flex justify-center bg-white bg-opacity-80'>
+        <div className=' w-7/12 p-4 pb-12 bg-white'>
+          <h1 className='text-center font-bold text-4xl my-8'>{data.title}</h1>
           <p className='px-8'>
             {data.explanation}
           </p>
           {data.images?.length > 0 && <div className='overflow-scroll flex justify-center py-8'>
-            {images.map((el, index) => <img key={index} src={`https://ipfs.io/ipfs/${el.cid}`} alt="" className='flex-none h-[250px] w-[250px] rounded-lg overflow-hidden mx-4 bg-gray-300'/>)}
+            {images.map((el, index) => <img key={index} src={`https://ipfs.io/ipfs/${el.cid}`} alt="" className='flex-none h-[200px] w-[200px] rounded-lg overflow-hidden mx-4 bg-gray-300'/>)}
           </div>}
-          <div className='w-full h-36 flex flex-col items-center justify-center'>
-            <p>Enter amount of ETH to donate to this cause</p>
-            <input type="number" onChange={(e) => setAmount(e.target.value)} className='bg-gray-200 my-4 h-8 rounded-lg outline-none p-4'/>
-            <button onClick={donate} className='bg-green-600 text-white w-[250px] h-[50px] rounded-lg hover:bg-green-700'>Donate</button>
+          <div className='w-3/4 ml-[12.5%] h-40 pt-2 flex flex-col items-center rounded-lg bg-slate-100'>
+            <img src="assets/arrow-down.svg" className='h-8' alt="" />
+            <input 
+              type="number" 
+              onChange={(e) => setAmount(e.target.value)} 
+              className='bg-gray-200 w-[270px] mt-2 mb-4 h-6 rounded-lg outline-none p-4'
+              placeholder='Donate ETH - Enter amount...'
+            />
+            <button onClick={donate} className='bg-green-600 text-white w-[200px] h-[40px] rounded-lg hover:bg-green-700'>Donate</button>
           </div>
         </div>
+        </div>
+  
       </div>
     </div>
   )
