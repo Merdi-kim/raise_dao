@@ -7,15 +7,15 @@ const LandingPage = () => {
 
   const explanations = [
     {
-      image:'/',
+      image:'assets/illustration1.svg',
       text:'Bring your idea that will impact the world and submit it for the community to fund your project'
     },
     {
-      image:'/',
+      image:'assets/illustration2.svg',
       text:'Participate in projects you love and fund them in order to help bring them to life'
     },
     {
-      image:'/',
+      image:'assets/illustration3.svg',
       text:'Help us keep the community funds safe and the platform risk-free by flagging suspicious projects'
     }
   ]
