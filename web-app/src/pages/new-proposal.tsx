@@ -68,12 +68,12 @@ const NewProposal = () => {
   return (
     <div>
       <Navbar/>
-      <div className='w-full min-h-screen flex flex-col items-center justify-center pb-12'>
-        <form onSubmit={publishData} className='w-7/12 mt-4 pt-4 flex flex-col items-center rounded-xl bg-slate-200 border-2 border-slate-300'>
-          <input type="text" onChange={(e) => setDonationData({...donationData, title:e.target.value})} placeholder='Your title goes here...' className='outline-none w-5/6 my-4 h-8 rounded-lg p-4'/>
+      <div className='w-full min-h-screen flex flex-col items-center pb-12'>
+        <form onSubmit={publishData} className='w-11/12 sm:w-9/12 lg:w-7/12 mt-10 pt-4 flex flex-col items-center rounded-xl bg-slate-200 border-2 border-slate-300'>
+          <input type="text" onChange={(e) => setDonationData({...donationData, title:e.target.value})} placeholder='Your title goes here...' className='outline-none w-11/12 sm:w-5/6 my-4 h-8 rounded-lg p-4'/>
           <textarea 
             placeholder='Describe the problem you are trying to solve and the strategy here' 
-            className='outline-none w-5/6 my-4 rounded-lg p-4' 
+            className='outline-none w-11/12 sm:w-5/6 my-4 rounded-lg p-4' 
             cols={30} rows={8}
             onChange={(e) => setDonationData({...donationData, explanation:e.target.value})}
           />

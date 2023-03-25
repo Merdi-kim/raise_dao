@@ -35,10 +35,10 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div className='flex flex-col items-center pt-12'>
+      <div className='flex flex-col items-center pt-4 md:pt-12'>
         { data.map((el, index) =><ProposalCard key={index} data={el.data}/>)}
       </div>
-      <Link href={'/new-proposal'} className='fixed top-[80vh] right-20 rounded-[50%] overflow-hidden bg-gray-200 hover:bg-gray-300'> 
+      <Link href={'/new-proposal'} className='fixed top-[85vh] md:top-[80vh] right-4 lg:right-20 rounded-[50%] overflow-hidden bg-gray-200 hover:bg-gray-300'> 
         <img src="/assets/add.png" className='h-16 w-16' alt="add icon" />
       </Link>
     </div>
