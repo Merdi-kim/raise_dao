@@ -41,7 +41,7 @@ const ProposalCard:FC<ProposalData> = ({ data }) => {
             </div>
             <div className='flex flex-col sm:flex-row items-center justify-between pl-8'>
                 <DonorsCount count ={data.donorsCount}/>
-                <button className=' w-[80px] mt-4 border-b-2 md:border-b-0 border-slate-300 md:mt-0 pb-2 border-gray-400 hover:border-b-2'>Read more</button>
+                <button className=' w-[80px] mt-4 border-b-2 md:border-b-0 border-slate-300 md:mt-0 pb-2 hover:border-b-2'>Read more</button>
             </div>
         </div>
       </div>

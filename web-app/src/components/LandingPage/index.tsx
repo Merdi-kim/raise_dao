@@ -22,11 +22,11 @@ const LandingPage = () => {
 
   return (
     <div className='h-full'>
-        <div className='w-full h-[80vh] bg-hero-wave bg-no-repeat'>
+        <div className='w-full h-[40vh] md:h-[80vh] bg-hero-wave bg-no-repeat'>
           <div className='h-full w-full bg-white bg-opacity-80 '>
             <div className='h-[30%] flex items-center justify-center'>
               <h2 
-                className='font-bold text-8xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-12'
+                className='font-bold text-center text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-12'
               > 
                 Impact the world today
               </h2>
@@ -40,12 +40,12 @@ const LandingPage = () => {
           </div>
         </div>
         <div>
-            <div className='flex justify-between p-8'>
+            <div className='flex flex-wrap justify-center p-8'>
               {explanations.map(({image,text}, index) =><ExplanationCard key={index} text={text} image={image}/>)}
             </div>
-            <div className='h-[40vh] flex flex-col justify-center'>
-                <div className='text-center pt-8'>
-                    <p className='text-8xl'>Let's make it happen...</p>
+            <div className='flex flex-col mb-8 justify-center'>
+                <div className='text-center  md:pt-2 lg:pt-8'>
+                    <p className='text-2xl sm:text-4xl md:text-6xl lg:text-8xl mb-4 md:mb-0'>Let's make it happen...</p>
                 </div>
                 <ActionButton/>
             </div>

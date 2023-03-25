@@ -6,7 +6,7 @@ const ActionButton = () => {
         Router.push('/home')
     }
   return (
-    <div className='flex items-center justify-center h-32 w-full'>
+    <div className='flex items-center justify-center md:h-32 w-full'>
         <button onClick={goToHome} className='w-[190px] h-10 rounded-lg flex items-center justify-center cursor-pointer text-white bg-purple-500 hover:bg-purple-700 hover:rotate-1'>Start here</button>
     </div>
     
