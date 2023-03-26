@@ -1,7 +1,7 @@
 import { CollectionRecordResponse } from "@polybase/client"
 
 export interface IDetailsPage {
-    data:CollectionRecordResponse<any>[]
+    data: any//CollectionRecordResponse<any>[]
     proposalId:string
 }
 
