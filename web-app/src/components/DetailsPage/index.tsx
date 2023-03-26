@@ -45,7 +45,7 @@ const DetailsPage= ({data, proposalId}:IDetailsPage) => {
   const donate = async() => {
     if(amount <= '0') return window.alert('Cannot donate 0 ETH')
     await contract?.fundProposal(Number(proposalId), {value: ethers.utils.parseEther(`${amount}`)})
-    const collectionReference = db.collection("proposal");
+    const collectionReference = db.collection("Proposal");
     await collectionReference
     .record(data.id)
     .call("updateStatistics", [Number(amount)]);

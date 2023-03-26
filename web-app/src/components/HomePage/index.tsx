@@ -11,7 +11,7 @@ function HomePage() {
   const [data, setData] = useState<CollectionRecordResponse<any>[]>([])
 
   const fetchData = async() => {
-    const collectionReference = db.collection("proposal")
+    const collectionReference = db.collection("Proposal")
     try{
       const records = await collectionReference.get()
       const { data } = records

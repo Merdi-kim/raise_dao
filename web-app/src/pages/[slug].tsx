@@ -11,7 +11,7 @@ const DetailsPage = () => {
   const router = useRouter()
 
   const fetchData = async() => {
-    const collectionReference = db.collection("proposal")
+    const collectionReference = db.collection("Proposal")
     const { id } = router.query
     //@ts-ignore
     setId(id)

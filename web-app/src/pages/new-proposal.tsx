@@ -56,7 +56,7 @@ const NewProposal = () => {
       cid = await storage.put(donationData.images)
     }
     await contract?.createProposal(id, ethers.utils.parseEther(`${donationData.budgetAmount}`))
-    const collectionReference = db.collection("proposal");
+    const collectionReference = db.collection("Proposal");
     await collectionReference.create([
       `${id}`,
       donationData.title,
