@@ -26,7 +26,7 @@ function HomePage() {
   }, [])
 
   return (
-    <div>
+    <div className='font-roboto'>
       <Navbar/>
       <div className='h-20 w-full flex items-center justify-center'>
         <div className='h-12 w-[550px] flex items-center justify-center rounded-xl px-4 bg-slate-100 border-2 border-slate-200'>

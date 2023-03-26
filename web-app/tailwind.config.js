@@ -14,6 +14,11 @@ module.exports = {
         'hero-wave':"url('/assets/wave.svg')"
       }
     },
+    fontFamily: {
+      'roboto': ['Roboto', 'sans-serif'],
+      'mono': ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace']
+
+    }
   },
   plugins: [
     require('@tailwindcss/line-clamp'),

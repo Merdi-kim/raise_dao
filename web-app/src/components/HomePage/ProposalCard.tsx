@@ -17,8 +17,8 @@ const ProposalCard:FC<IProposalData> = ({ data }) => {
           className=' w-[80px] h-[80px] sm:w-[150px] sm:h-[150px] rounded-[50%] md:h-[270px] md:w-[270px] md:rounded-lg my-4 object-cover'
         />
         <div className='h-full w-full text-center p-2 sm:p-4'>
-            <h3 className='font-bold text-lg sm:text-xl mb-4'>{data.title}</h3>
-            <p className='ml-8 font-normal text-left text-sm md:text-lg text-gray-800 h-[4rem] md:h-[7.5rem] line-clamp-3 md:line-clamp-5'>
+            <h3 className='font-mono font-bold text-lg sm:text-2xl mb-4'>{data.title}</h3>
+            <p className='ml-8 text-left text-sm md:text-lg text-gray-800 h-[4rem] md:h-[7.5rem] line-clamp-3 md:line-clamp-5'>
                {data.explanation}
             </p>
             <div className='h-10 flex flex-col items-center justify-center my-4'>

@@ -22,12 +22,12 @@ const LandingPage = () => {
   ]
 
   return (
-    <div className='h-full'>
+    <div className='h-full font-roboto'>
         <div className='w-full h-[40vh] md:h-[80vh] bg-hero-wave bg-no-repeat'>
           <div className='h-full w-full bg-white bg-opacity-80 '>
             <div className='h-[30%] flex items-center justify-center'>
               <h2 
-                className='font-bold text-center text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-12'
+                className='font-bold font-mono text-center text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-12'
               > 
                 Impact the world today
               </h2>
@@ -46,13 +46,13 @@ const LandingPage = () => {
             </div>
             <div className='flex flex-col mb-8 justify-center'>
                 <div className='text-center  md:pt-2 lg:pt-8'>
-                    <p className='text-2xl sm:text-4xl md:text-6xl lg:text-8xl mb-4 md:mb-0'>Let us make it happen...</p>
+                    <p className='text-2xl font-mono sm:text-4xl md:text-6xl lg:text-8xl mb-4 md:mb-0'>Let us make it happen...</p>
                 </div>
                 <ActionButton/>
             </div>
             <footer className='h-[15vh] flex justify-between items-center px-8'>
               <div className='h-[110px] w-[110px] rounded-[50%] flex flex-col items-center justify-center'>
-                <h2 className='font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-4xl mt-12'>Raise</h2>
+                <h2 className='font-bold font-mono text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-4xl mt-12'>Raise</h2>
                 <Image height={200} width={200}  src="/assets/signature.png" alt="" className='h-16 w-44 translate-y-[-10px]' />
               </div>
               <ul>
