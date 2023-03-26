@@ -27,7 +27,7 @@ const DetailsPage = () => {
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [fetchData])
 
   return (
     < DetailsPageComponent data={data} proposalId={id}/> 

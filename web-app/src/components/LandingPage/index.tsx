@@ -46,7 +46,7 @@ const LandingPage = () => {
             </div>
             <div className='flex flex-col mb-8 justify-center'>
                 <div className='text-center  md:pt-2 lg:pt-8'>
-                    <p className='text-2xl sm:text-4xl md:text-6xl lg:text-8xl mb-4 md:mb-0'>Let's make it happen...</p>
+                    <p className='text-2xl sm:text-4xl md:text-6xl lg:text-8xl mb-4 md:mb-0'>Let us make it happen...</p>
                 </div>
                 <ActionButton/>
             </div>

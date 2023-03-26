@@ -38,7 +38,7 @@ const DetailsPage= ({data, proposalId}:IDetailsPage) => {
     if(data.id !==undefined) {
       retrieveImages(data.images)
     }
-  },[data.id, retrieveImages])
+  },[data.id, data.images, retrieveImages])
 
   
 
