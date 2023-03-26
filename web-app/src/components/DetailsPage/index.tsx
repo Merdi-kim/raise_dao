@@ -58,7 +58,10 @@ const DetailsPage= ({data, proposalId}:IDetailsPage) => {
       <div className=' bg-[url("https://i0.wp.com/ketto.blog/wp-content/uploads/2020/10/shutterstock_1735703225-e1603424756464.jpg?fit=547%2C292&ssl=1")] bg-cover'>
         <div className='h-full w-full font-roboto flex justify-center bg-white bg-opacity-80'>
         <div className=' w-11/12 md:w-9/12 lg:w-7/12 p-4 pb-12 bg-white'>
-          <h1 className='text-center font-bold font-mono text-xl md:text-3xl lg:text-4xl my-8'>{data.title}</h1>
+          <h1 className='text-center font-bold font-mono text-xl md:text-3xl lg:text-4xl my-6'>{data.title}</h1>
+          <div className='w-full flex justify-center text-slate-500 mb-4'> 
+            <Image height={20} width={20} src="/assets/red-flag.png" className='mr-1' alt="red flag" /> Flagged: <span className='font-bold text-black mx-1'>0</span> times
+          </div>
           <p className='px-1 md:px-4 lg:px-8 text-sm md:text-lg'>
             {data.explanation}
           </p>
