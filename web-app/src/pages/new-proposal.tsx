@@ -82,7 +82,7 @@ const NewProposal = () => {
           <input type="file" accept='images/*' multiple onChange={selectFiles} hidden id='fileUpload'/>
           <span>Click here to add images</span>
           <label htmlFor="fileUpload" className='cursor-pointer h-14 w-14 flex items-center justify-center rounded-[50%]'>
-            <img src="assets/add.png" alt="" className='h-full w-full' />
+            <Image height={200} width={200} src="/assets/add.png" alt="" className='h-full w-full' />
           </label>
           {donationData.imagesPreview.length > 0 && <div className='w-5/6 flex justify-center overflow-scroll py-8'>
             {donationData.imagesPreview.map((el, index) => <Image height={200} width={200}  key={index} src={el} alt='' className='flex-none h-[80px] w-[80px] rounded-lg overflow-hidden mx-4 bg-gray-300'/>)}
