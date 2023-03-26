@@ -7,7 +7,7 @@ import DonorsCount from './DonorsCount'
 
 const ProposalCard:FC<IProposalData> = ({ data }) => {
   return (
-    <div className='w-11/12 sm:w-8/12 md:w-11/12 lg:w-8/12 h-[16rem] mb-20'>
+    <div className='w-11/12 sm:w-8/12 md:w-11/12 lg:w-8/12 h-[16rem] mb-32'>
       <Link href={{ pathname:`/${data.id}`, query: { id : data.id } }}>
       <div className='flex flex-col md:flex-row items-center rounded-xl bg-gray-100 shadow-2xl px-2'>
         <Image

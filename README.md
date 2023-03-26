@@ -1,13 +1,19 @@
-# Sample Hardhat Project
+# Fundraising Platform for Global Events
+This project aims to create a fundraising platform for different events around the world. The platform will be designed to facilitate fundraising efforts for various events, such as hunger relief, tree planting, and more.
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+## Features
+- User-friendly interface for easy navigation and accessibility
+- Secure payment system for safe and secure transactions
+- Ability to create and manage fundraising campaigns
+- Option to donate to existing campaigns
 
-Try running some of the following tasks:
+## Technologies Used
+- Front-end: Next.js + Tailwind.css
+- Blockchain: Scroll
+- Database: Polybase
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
-```
+## Installation and Usage
+- Clone the repository `git clone https://github.com/Merdi-kim/raise_dao.git`.
+- Install the dependencies using `npm install`.
+- Set up a [web3.storage]('https://web3.storage/') account and enter the API key `NEXT_PUBLIC_STORAGE_KEY =your key goes here` in the .env file.
+- Run the server using `npm run dev`.
