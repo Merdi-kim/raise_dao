@@ -1,6 +1,7 @@
-import React from 'react'
+import { IExplanationCard } from '@/interfaces'
+import React, { FC } from 'react'
 
-const ExplanationCard = ({image, text}) => {
+const ExplanationCard:FC<IExplanationCard> = ({image, text}) => {
   return (
     <div className='w-[300px] sm:w-[400px] h-full m-4 rounded-2xl bg-slate-50 border-[0.5px] border-purple-500'>
         <div className='sm:h-[100px] flex justify-center items-center'>

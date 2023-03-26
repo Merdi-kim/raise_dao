@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Web3File, Web3Storage } from 'web3.storage'
 import Navbar from '../__modules__/Navbar'
 import contractAbi from '@/artifacts/contracts/Raise.sol/Raise.json'
@@ -7,9 +7,9 @@ import { contractAddress } from '@/utils'
 import { ethers } from 'ethers'
 import { db } from '@/lib/database'
 import Router from 'next/router'
+import { IDetailsPage } from '@/interfaces'
 
-const DetailsPage = ({data, proposalId}) => {
-  
+const DetailsPage= ({data, proposalId}:IDetailsPage) => {
 
   const [images, setImages] = useState<Web3File[]>([])
   const [amount, setAmount] = useState('0')

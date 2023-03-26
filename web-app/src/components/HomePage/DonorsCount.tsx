@@ -1,6 +1,7 @@
-import React from 'react'
+import { IDonorsCount } from '@/interfaces'
+import React, { FC } from 'react'
 
-const DonorsCount = ({count}) => {
+const DonorsCount:FC<IDonorsCount> = ({count}) => {
   return (
     <div>
         <div className='flex items-center'>

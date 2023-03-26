@@ -4,7 +4,7 @@ import Router from 'next/router'
 import { CIDString, Web3Storage } from 'web3.storage'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import contractAbi from '@/artifacts/contracts/Raise.sol/Raise.json'
-import { useContract, useSigner } from 'wagmi'
+import { useContract, useSigner, useAccount } from 'wagmi'
 import { contractAddress } from '@/utils'
 import { ethers } from 'ethers'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
@@ -29,6 +29,7 @@ const NewProposal = () => {
   })
 
   const { data: signer, isError, isLoading } = useSigner()
+  const { address, isConnecting, isDisconnected } = useAccount()
 
   const contract = useContract({
     address: contractAddress,
@@ -92,7 +93,7 @@ const NewProposal = () => {
             className='outline-none w-5/6 h-8 mt-2 rounded-lg p-4'
           />
           <div className='w-5/6 h-24 flex items-center justify-center'>
-            { true ? <button className='h-8 w-[150px] rounded-lg text-white bg-blue-500 hover:bg-blue-600'>Publish</button> : <ConnectButton/>}
+            { address !== undefined ? <button className='h-8 w-[150px] rounded-lg text-white bg-blue-500 hover:bg-blue-600'>Publish</button> : <ConnectButton/>}
           </div>
         </form>
       </div>

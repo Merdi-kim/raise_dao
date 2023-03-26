@@ -13,6 +13,7 @@ const DetailsPage = () => {
   const fetchData = async() => {
     const collectionReference = db.collection("proposal")
     const { id } = router.query
+    //@ts-ignore
     setId(id)
     if(!id) return router.push('/home')
     try{

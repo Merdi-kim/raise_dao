@@ -1,18 +1,10 @@
+import { IProposalData } from '@/interfaces'
 import Link from 'next/link'
 import React, {FC} from 'react'
 import DonorsCount from './DonorsCount'
 
-interface ProposalData {
-  id: string; 
-  title: string;
-  explanation: string;
-  budgetAmount: number;
-  images: string;
-  donorsCount: number;
-  raisedAmount: number;
-}
 
-const ProposalCard:FC<ProposalData> = ({ data }) => {
+const ProposalCard:FC<IProposalData> = ({ data }) => {
   return (
     <div className='w-11/12 sm:w-8/12 md:w-11/12 lg:w-8/12 h-[16rem] mb-20'>
       <Link href={{ pathname:`/${data.id}`, query: { id : data.id } }}>
