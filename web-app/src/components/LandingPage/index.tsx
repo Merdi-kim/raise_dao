@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 import ActionButton from './ActionButton'
 import ExplanationCard from './ExplanationCard'
@@ -52,7 +53,7 @@ const LandingPage = () => {
             <footer className='h-[15vh] flex justify-between items-center px-8'>
               <div className='h-[110px] w-[110px] rounded-[50%] flex flex-col items-center justify-center'>
                 <h2 className='font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-4xl mt-12'>Raise</h2>
-                <img src="/assets/signature.png" alt="" className='h-16 w-44 translate-y-[-10px]' />
+                <Image height={200} width={200}  src="/assets/signature.png" alt="" className='h-16 w-44 translate-y-[-10px]' />
               </div>
               <ul>
                 <li>About us</li>

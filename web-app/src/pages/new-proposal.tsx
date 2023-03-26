@@ -9,6 +9,7 @@ import { contractAddress } from '@/utils'
 import { ethers } from 'ethers'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import stringHash from '@sindresorhus/string-hash';
+import Image from 'next/image'
 
 interface donationDataTypes {
   title:string, 
@@ -84,7 +85,7 @@ const NewProposal = () => {
             <img src="assets/add.png" alt="" className='h-full w-full' />
           </label>
           {donationData.imagesPreview.length > 0 && <div className='w-5/6 flex justify-center overflow-scroll py-8'>
-            {donationData.imagesPreview.map((el, index) => <img key={index} src={el} alt='' className='flex-none h-[80px] w-[80px] rounded-lg overflow-hidden mx-4 bg-gray-300'/>)}
+            {donationData.imagesPreview.map((el, index) => <Image height={200} width={200}  key={index} src={el} alt='' className='flex-none h-[80px] w-[80px] rounded-lg overflow-hidden mx-4 bg-gray-300'/>)}
           </div>}
           <input 
             type="number" 

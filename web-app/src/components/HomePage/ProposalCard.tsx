@@ -1,4 +1,5 @@
 import { IProposalData } from '@/interfaces'
+import Image from 'next/image'
 import Link from 'next/link'
 import React, {FC} from 'react'
 import DonorsCount from './DonorsCount'
@@ -9,7 +10,8 @@ const ProposalCard:FC<IProposalData> = ({ data }) => {
     <div className='w-11/12 sm:w-8/12 md:w-11/12 lg:w-8/12 h-[16rem] mb-20'>
       <Link href={{ pathname:`/${data.id}`, query: { id : data.id } }}>
       <div className='flex flex-col md:flex-row items-center rounded-xl bg-gray-100 shadow-2xl px-2'>
-        <img 
+        <Image
+          height={200} width={200} 
           src="https://i0.wp.com/ketto.blog/wp-content/uploads/2020/10/shutterstock_1735703225-e1603424756464.jpg?fit=547%2C292&ssl=1" 
           alt="" 
           className=' w-[80px] h-[80px] sm:w-[150px] sm:h-[150px] rounded-[50%] md:h-[270px] md:w-[270px] md:rounded-lg my-4 object-cover'
@@ -23,11 +25,11 @@ const ProposalCard:FC<IProposalData> = ({ data }) => {
               <progress className='w-2/4 h-[1rem]' value={data.raisedAmount} max={data.budgetAmount}/>
               <div className='font-semibold flex mt-2 text-sm'>
                 <div className='flex items-center'>
-                  {data.raisedAmount} <img src="/assets/eth-logo.png" className='h-3' alt="" />
+                  {data.raisedAmount} <Image height={20} width={20} src="/assets/eth-logo.png" className='h-3' alt="" />
                 </div>
                  / 
                 <div className='flex items-center'>
-                  {data.budgetAmount} <img src="/assets/eth-logo.png" className='h-3' alt="" />
+                  {data.budgetAmount} <Image height={20} width={20} src="/assets/eth-logo.png" className='h-3' alt="" />
                 </div>
               </div>
             </div>

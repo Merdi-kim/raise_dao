@@ -8,6 +8,7 @@ import { ethers } from 'ethers'
 import { db } from '@/lib/database'
 import Router from 'next/router'
 import { IDetailsPage } from '@/interfaces'
+import Image from 'next/image'
 
 const DetailsPage= ({data, proposalId}:IDetailsPage) => {
 
@@ -37,7 +38,7 @@ const DetailsPage= ({data, proposalId}:IDetailsPage) => {
     if(data.id !==undefined) {
       retrieveImages(data.images)
     }
-  },[data.id])
+  },[data.id, retrieveImages])
 
   
 
@@ -62,10 +63,10 @@ const DetailsPage= ({data, proposalId}:IDetailsPage) => {
             {data.explanation}
           </p>
           {data.images?.length > 0 && <div className='overflow-scroll flex justify-center py-8'>
-            {images.map((el, index) => <img key={index} src={`https://ipfs.io/ipfs/${el.cid}`} alt="" className='flex-none h-[70px] w-[70px] md:h-[100px] md:w-[100px] lg:h-[200px] lg:w-[200px] rounded-lg overflow-hidden mx-4 bg-gray-300'/>)}
+            {images.map((el, index) => <Image height={200} width={200} key={index} src={`https://ipfs.io/ipfs/${el.cid}`} alt="" className='flex-none h-[70px] w-[70px] md:h-[100px] md:w-[100px] lg:h-[200px] lg:w-[200px] rounded-lg overflow-hidden mx-4 bg-gray-300'/>)}
           </div>}
           <div className='w-full sm:w-3/4 sm:ml-[12.5%] h-40 pt-2 flex flex-col items-center rounded-lg bg-slate-100'>
-            <img src="assets/arrow-down.svg" className='h-8' alt="" />
+            <Image height={200} width={200} src="/assets/arrow-down.svg" className='h-8' alt="" />
             <input 
               type="number" 
               onChange={(e) => setAmount(e.target.value)} 
