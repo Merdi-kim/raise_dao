@@ -9,7 +9,7 @@ This project aims to create a fundraising platform for different events around t
 
 ## Technologies Used
 - Front-end: Next.js + Tailwind.css
-- Blockchain: Scroll
+- Blockchain: Solidity/Scroll
 - Database: Polybase
 
 ## Installation and Usage
